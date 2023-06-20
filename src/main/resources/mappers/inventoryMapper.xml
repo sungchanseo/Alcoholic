@@ -24,9 +24,8 @@
       <!-- 재고정보 목록 수정  -->
 
       <update id="modifyInventory">
-         update material set ma_id=#{ma_id}, ma_name=#{ma_name}, ma_qty=#{ma_qty}, unit_cost=#{unit_cost}, whs_num=#{whs_num}, shelt_position=#{shelt_position}, 
-         ma_image=#{ma_image}, ma_regdate=now(), ma_emp=#{ma_emp}
-         where ma_id=#{ma_id}
+         update material set ma_qty=#{ma_qty} 
+         where ma_id=#{ma_id} and ma_qty =""
       
       </update>
       <!-- 재고정보 목록 수정  -->

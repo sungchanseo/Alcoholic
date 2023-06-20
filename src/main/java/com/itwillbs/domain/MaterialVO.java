@@ -15,8 +15,8 @@ public class MaterialVO {
 	private String ma_image;
 	private Date ma_regdate;
 	private int ma_emp;
-	
-	
+	private String ma_qtys;
+
 	// getset 메서드
 	public String getMa_id() {
 		return ma_id;
@@ -72,15 +72,25 @@ public class MaterialVO {
 	public void setMa_emp(int ma_emp) {
 		this.ma_emp = ma_emp;
 	}
-	
-	
+	public String getMa_qtys() {
+		return ma_qtys;
+	}
+	public void setMa_qtys(String ma_qtys) {
+		this.ma_qtys = ma_qtys;
+	}
+
 	// toString 메서드
 	@Override
 	public String toString() {
 		return "MaterialVO [ma_id=" + ma_id + ", ma_name=" + ma_name + ", ma_qty=" + ma_qty + ", unit_cost=" + unit_cost
 				+ ", whs_num=" + whs_num + ", shelt_position=" + shelt_position + ", ma_image=" + ma_image
-				+ ", ma_regdate=" + ma_regdate + ", ma_emp=" + ma_emp + "]";
+				+ ", ma_regdate=" + ma_regdate + ", ma_emp=" + ma_emp + ", ma_qtys=" + ma_qtys + "]";
 	}
+	
+	
+	
+	
+	
 	
 	
 }
