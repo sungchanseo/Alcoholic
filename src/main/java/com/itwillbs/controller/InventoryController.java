@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.domain.MaterialVO;
 import com.itwillbs.service.InventoryService;
@@ -26,6 +27,7 @@ public class InventoryController {
 	
 	// 재고리스트 보기 - /inventory/list (GET)
 	// http://localhost:8088/purchasing/inventory/list
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void listGET(Model model , MaterialVO vo){
 		logger.debug("@@@@@listGET()호출!@@@@@");
@@ -38,6 +40,7 @@ public class InventoryController {
 	}
 	
 	// 재고 등록 처리
+
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	public String insertPOST(MaterialVO vo){
 		
