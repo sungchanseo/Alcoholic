@@ -78,8 +78,7 @@
                   type: "post",
                   data: {ma_id:ma_id, ma_name:ma_name, whs_num:whs_num},
                   success: function() {
-                	  frequency: delay,                   
-                      decay: 1
+
                      alert("등록완료");
          
                   },
