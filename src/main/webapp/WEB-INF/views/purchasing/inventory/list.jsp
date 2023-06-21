@@ -79,7 +79,7 @@
                   data: {ma_id:ma_id, ma_name:ma_name, whs_num:whs_num},
                   success: function() {
                      alert("등록완료");
-         
+    
                   },
                   error: function() {
                      alert("error");
