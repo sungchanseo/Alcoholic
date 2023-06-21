@@ -174,10 +174,10 @@
          
             let tbl = "<tr>";
             tbl += " <td>";
-            tbl += "<input type='text' name='ma_id' id='ma_id'>";
+            tbl += "<input type='text' name='ma_name' id='ma_name'>";
             tbl += "</td>"; 
             tbl += " <td>";
-            tbl += "<input type='text' name='ma_name' id='ma_name'>";
+            tbl += "<input type='text' name='ma_id' id='ma_id'>";
             tbl += "</td>";
             tbl += " <td>";
             tbl += "<input type='text' name='whs_num' id='whs_num'>";
@@ -260,7 +260,7 @@
          <tr>
             <td> ${in.ma_name } </td>
             <td> ${in.ma_id } </td>
-            <td> ${in.whs_num } </td>
+            <td> ${in.whs_num } </td>	
          </tr>
       </c:forEach>
    </table>
