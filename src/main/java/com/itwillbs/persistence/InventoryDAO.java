@@ -19,4 +19,6 @@ public interface InventoryDAO {
 	// 재고목록 수정하기
 	public Integer modifyInventory(MaterialVO mvo);
 	
+	// 재고목록 더하기
+	public void insertInventory(MaterialVO vo);
 }

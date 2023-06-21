@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -35,6 +36,22 @@ public class InventoryController {
 		model.addAttribute("inventoryList",inventoryList);
 		
 	}
+	
+	// 재고 등록 처리
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	public String insertPOST(MaterialVO vo){
+		
+		logger.debug("@@@@ 재고등록 행추가@@@@");
+//		logger.debug("@@@@ 재고등록 행추가@@@@" + vo);
+		
+		logger.debug("vo:"+ vo.getMa_id());
+		
+		invservice.insertInventory(vo);
+		
+		return "redirect:/purchasing/inventory/list";
+		
+	}
+	
 	// http://localhost:8088/purchasing/inventory/modify
 	
 	// 재고 수정 하기위해 아이디 가져오기
@@ -59,5 +76,9 @@ public class InventoryController {
 			
 			return "redirect:/purchasing/inventory/list";    	    	
 	}
+	
+	
+	// http://localhost:8088/purchasing/inventory/list
+
    
 }
