@@ -46,6 +46,21 @@ public class OrderDAOImpl implements OrderDAO{
 	
 		return null;
 	}
+
+	// 발주번호 최대값
+	@Override
+	public String getMaxNumber() {
+		String maxNumber = sqlSession.selectOne(NAMESPACE + ".getMaxNumber"); // 230620001
+		logger.debug("############## maxNumber : " + maxNumber);
+		return maxNumber;
+	}
+   // 발주번호 최대날짜
+	@Override
+	public String getMaxDate() {
+		String maxDate = sqlSession.selectOne(NAMESPACE + ".getMaxDate"); // 230620
+		logger.debug("############## maxDate : " + maxDate);
+		return maxDate;
+	}
    
 	
 

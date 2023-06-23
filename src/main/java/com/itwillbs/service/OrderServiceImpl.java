@@ -37,6 +37,18 @@ public class OrderServiceImpl implements OrderService {
 		return null;
 	}
 
+	@Override
+	public String getMaxNumber() throws Exception {
+		
+		return odao.getMaxNumber();
+	}
+
+	@Override
+	public String getMaxDate() throws Exception {
+		
+		return odao.getMaxDate();
+	}
+
 
 	
 }

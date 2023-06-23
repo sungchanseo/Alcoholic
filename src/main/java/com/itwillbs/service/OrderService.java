@@ -15,4 +15,10 @@ public interface OrderService {
     // 발주수정하기
 	public Integer modifyOrder(OrderVO mvo);
 	
+	// 4-1. 발주번호 최대값 (maxNumber) 230620004
+	public String getMaxNumber() throws Exception;
+
+	// 4-2. 발주번호 최대날짜 (maxDate) 230620
+	public String getMaxDate() throws Exception;
+	
 }
