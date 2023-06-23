@@ -59,10 +59,7 @@ public class OrderController {
     public void modifyOrderGET(OrderVO vo) {
     	logger.debug("@@@@@modifyOrderGET()호출!@@@@@");
     }
-	
-	
 
-   
    @RequestMapping(value="/modify", method= RequestMethod.POST)
    public String ModifyOrderPOST(OrderVO vo) {
 	   logger.debug("@@@@@modifyOrderPOST()호출!@@@@@");

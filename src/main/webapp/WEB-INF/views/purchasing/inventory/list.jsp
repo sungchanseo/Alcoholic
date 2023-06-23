@@ -96,31 +96,8 @@
          }); //write click
       
       }); //writeForm click
-    /*   $('.update').click(function(){
-    	 console.log("실사량 수정하기");
-    	 var ma_qty = $('#ma_qty').val();
-    	 var ma_id = $('#ma_id').val();
-    	 alert(ma_qty);
-    	 alert(ma_id);
-    	 
-    	$.ajax({
-    			 url:"list",
-    			 type:"post",
-    			 data:{ma_qty:ma_qty},
-    			 success:function(){
-    				 location.href="/purchasing/inventory/list"
-    				 alert("수정완료!");
-    			 },
-    			 error:function(){
-    				 alert("error");
-    			 }
-    		 }); //ajax
-    	 // if- else
-    	 
-      }); // 업데이트하기 click
-      */
+
    }); //jQuery
-   /*  data-bt_date="${in.bt_date}" */
 </script>
 
 </head>
@@ -135,7 +112,7 @@
          <th>품목명</th>
          <th>품목코드</th>
          <th>현재고</th>
-         <th>단위?</th>
+         <th>단위</th>
          <th>날짜</th>
          <th>실사량</th>
          <th>수정</th>

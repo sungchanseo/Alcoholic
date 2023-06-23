@@ -15,7 +15,5 @@
          values (#{order_id}, #{ma_id}, #{order_maName}, #{order_qty}, #{order_unitCost}, #{order_sum},#{order_vat}, #{whs_num},#{order_emp},now(),now(),now())
        </insert>
        
-       <update id="modifyOrder">
-       
-       </update>
+    
       </mapper>
