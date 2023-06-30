@@ -348,9 +348,22 @@ $(function() {
 							str += "<td><input type='text' id='order_qty' name='order_qty' value="+ obj.order_qty +"></td>";
 							str += "<td><input type='text' id='order_sum' name='order_sum' value="+ obj.order_sum +"></td>";
 							str += "<td><input type='text' id='order_vat' name='order_vat' value="+ obj.order_vat +"></td>";
-							str += "<td><input type='text' id='order_date' name='order_date' value="+ obj.order_date +"></td>";
-							str += "<td><input type='text' id='due_date' name='due_date' value="+ obj.due_date +"></td>";
-							str += "<td><input type='text' id='in_date' name='in_date' value="+ obj.in_date +"></td>";
+							// 날짜가 이상한 숫자로 변환된거 다시 날짜로 변환하기 
+							var oday = new Date(obj.order_date);
+							var omonday = oday.getMonth()+1;
+							var odays = oday.getDate();
+							str += "<td><input type='text' id='order_date' name='order_date' value="+ oday.getFullYear()+"-"+omonday+"-"+odays+"></td>";
+							// 날짜가 이상한 숫자로 변환된거 다시 날짜로 변환하기 
+							var rday = new Date(obj.due_date);
+							var rmonday = rday.getMonth()+1;
+							var day = rday.getDate();
+							str += "<td><input type='text' id='due_date' name='due_date' value="+ rday.getFullYear()+"-"+rmonday+"-"+day+"></td>";
+							// 날짜가 이상한 숫자로 변환된거 다시 날짜로 변환하기 
+							var iday = new Date(obj.in_date);
+							var imonday = iday.getMonth()+1;
+							var idays = iday.getDate();
+							str += "<td><input type='text' id='in_date' name='in_date' value="+ iday.getFullYear()+"-"+imonday+"-"+idays+"></td>";
+							
 							str += "<td><input type='text' id='whs_id' name='whs_id' value="+ obj.whs_id +"></td>";
 							str += "<td><input type='text' id='order_emp' name='order_emp' value="+ obj.order_emp +"></td>";
 							// 담당직원 세션에 저장된 아이디 들고오기
