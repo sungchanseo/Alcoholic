@@ -52,29 +52,29 @@ public class OrderController {
     @RequestMapping(value="/list", method = RequestMethod.POST)
     public String orderInsertGET(OrderVO vo ) throws Exception {
    
-     logger.debug("@@@@@발주 등록 행추가 가즈아~@@@@");
+      logger.debug("@@@@@발주 등록 행추가 가즈아~@@@@");
    
-	 logger.debug("vo :" + vo);
+	  logger.debug("vo :" + vo);
 	
-	 orserivce.insertOrder(vo);
+	  orserivce.insertOrder(vo);
       return "redirect:/purchasing/order/list";
    }
 // http://localhost:8088/purchasing/order/list
-   @RequestMapping(value = "/lists" , method = RequestMethod.GET)
-   @ResponseBody
-    public List<OrderVO> modifyOrderGET2(Model model ,String ma_id) throws Exception {
-    
-	   logger.debug("ma_id" + ma_id);
-    	
-    	// 테이블의 정보를 가져와서 모델에 추가 
-        List<OrderVO> orderLists = orserivce.getMaterialList(ma_id);
-        
-        model.addAttribute("orderLists", orderLists);
-       logger.debug("orderLISTssssssssss가져와지나???");
-        
-    	
-    	return orderLists;
-    }
+//   @RequestMapping(value = "/lists" , method = RequestMethod.GET)
+//   @ResponseBody
+//    public List<OrderVO> modifyOrderGET2(Model model ,String ma_id) throws Exception {
+//    
+//	   logger.debug("ma_id" + ma_id);
+//    	
+//    	// 테이블의 정보를 가져와서 모델에 추가 
+//        List<OrderVO> orderLists = orserivce.getMaterialList(ma_id);
+//        
+//        model.addAttribute("orderLists", orderLists);
+//       logger.debug("orderLISTssssssssss가져와지나???");
+//        
+//    	
+//    	return orderLists;
+//    }
 
    // 발주 수정 (조회)
    // http://localhost:8088/purchasing/order/list
