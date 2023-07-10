@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,22 +61,23 @@ public class ContractController {
 			return "redirect:/main/login";
 		}
 		
-		List<Object> contractList = null;
-
-		// 수주 목록을 가져오는 contService 호출
+		List<ContractVO> contractList = null;
+		
+		//수주목록을 가져오는 contService호출!'
 		pvo = contService.setPageInfoForContract(pvo);
 		logger.debug("@@@@@@@@@Controller : {}", pvo);
-
-		// service객체를 호출
+		
+		//service객체 호출
 		if (pvo.getSelector() != null && pvo.getSelector() != "") {
 			// 검색어가 있을 때
 			logger.debug("@@@@@@@@@Controller : 검색어가 있을 때입니다");
-			contractList = pageService.getListSearchObjectContractVO(pvo);
+			contractList = contService.getListSearchObjectContractVO(pvo);
 		} else {
 			// 검색어가 없을 때
 			logger.debug("@@@@@@@@@Controller : 검색어가 없을 때입니다");
-			contractList = pageService.getListPageSizeObjectContractVO(pvo);
+			contractList = contService.getListPageSizeObjectContractVO(pvo);
 		}
+		
 		logger.debug("@@@@@@@@@Controller : {}", contractList);
 
 		// 변수에 담아서 전달
@@ -102,11 +104,10 @@ public class ContractController {
 	// 수주 등록 입력하기
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public void registContractGET(ContractVO cvo) throws Exception {
-		logger.debug("@@@@@@@@@@@@Controller : 111수주 등록GET하기!!!!");
+		logger.debug("@@@@@@@@@@@@Controller : 수주 등록GET하기!!!!");
 	}
 
 	// 수주 등록 디비처리
-//	@PostMapping(value = "/insert")
 	@RequestMapping(value = "/insert", method = RequestMethod.POST, produces = "application/json; charset=UTF-8") 
 	@ResponseBody
 	public void registContractPOST(@RequestBody ContractVO cvo, HttpServletResponse response) throws Exception {
@@ -116,7 +117,6 @@ public class ContractController {
 		logger.debug("@@@@@@@@@@@@Controller : registContract()호출합니다!");
 		contService.registContract(cvo);
 		contService.contIdInsert(cvo.getCont_id());
-//		return "redirect:/contract/list";
 	}
 
 	// 수주 수정 입력하기
@@ -135,8 +135,6 @@ public class ContractController {
 		logger.debug("@@@@@@@@@controller : 수정한 수주정보 : " + cvo);
 
 		contService.modifyContract(cvo);
-//		return "redirect:/contract/list";
-
 	}
 
 	// 수주 삭제 디비처리
@@ -257,11 +255,12 @@ public class ContractController {
 	}
 	
 	//엑셀다운로드 콘트롤러
-	@PostMapping(value="/downExcel", produces = "application/text; charset=utf8")
-	public void downloadExcelPOST(HttpServletResponse response, @RequestParam("contractList") List<Object> contractList) throws IOException{
+//	@PostMapping(value="/downExcel", produces = "application/text; charset=utf8")
+	@RequestMapping(value="/downExcel/{contractList}", method = RequestMethod.GET)
+	public void downloadExcelPOST(HttpServletResponse response, @PathVariable("contractList") String contractList) throws IOException{
 		logger.debug("@@@@@@@@@@@Controller : 엑셀다운로드 콘트롤러 호출!!!!!");
 		logger.debug("@@@@@@@@@@@Controller : 받아온 리스트객체 : {}", contractList);
 
-		contService.downExcel(contractList, response);
+//		contService.downExcel(contractList, response);
 	}
 }

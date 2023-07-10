@@ -36,6 +36,24 @@ public interface ContractService {
 	public ProductionVO getProductInfo(String product_id) throws Exception;
 	
 	//엑셀화일 다운로드
-	public void downExcel(List<Object> contractList, HttpServletResponse response) throws IOException;
+	public void downExcel(List<ContractVO> contractList, HttpServletResponse response) throws IOException;
+	
+	///////////////////페이징처리 서비스 ////////////////////////
+	//전체 수주목록 갯수 계산하기 
+	public int getListAll(PagingVO pvo) throws Exception; 
+
+	//검색어 없을 때 페이징처리 수주목록 갯수 계산하기 
+	public int getListPageSizeAll(PagingVO pvo) throws Exception;
+	
+	//검색어 있을 때 페이징처리 수주목록 갯수 계산하기 
+	public int getListSearchAll(PagingVO pvo) throws Exception;
+	
+	//검색어 없을 때 페이징처리 수주목록 가져오기 
+	public List<ContractVO> getListPageSizeObjectContractVO(PagingVO pvo) throws Exception;
+	
+	// 검색어 있을 때 페이징처리 수주목록 가져오기 
+	public List<ContractVO> getListSearchObjectContractVO(PagingVO pvo) throws Exception;
+	///////////////////페이징처리 서비스 ////////////////////////
+
 }
 

@@ -166,7 +166,7 @@ public class ContractServiceImpl implements ContractService {
 
 	//엑셀화일 다운로드
 	@Override
-	public void downExcel(List<Object> contractList, HttpServletResponse response) throws IOException {
+	public void downExcel(List<ContractVO> contractList, HttpServletResponse response) throws IOException {
 		logger.debug("@@@@@@ContractService : 상품코드로 상품정보를 불러옵니다.");
 		logger.debug("@@@@@@ContractService : contractList : {}", contractList);
 		logger.debug("@@@@@@ContractService : contractList.size() : {}", contractList.size());
@@ -201,9 +201,8 @@ public class ContractServiceImpl implements ContractService {
         logger.debug("contractList : {}",contractList);
         //엑셀 몸통
         for (int i = 0; i < contractList.size() ; i++) {
-//    		logger.debug("반복문 시작합니다. ");
-//        	contractList.get(0).get;
-
+    		logger.debug("반복문 시작합니다. ");
+    		logger.debug("contractList.get(i) : {}",contractList.get(i));
     		cellNum = 0;
             row = sheet.createRow(rowNum++);
             cell = row.createCell(cellNum++);
@@ -238,6 +237,36 @@ public class ContractServiceImpl implements ContractService {
         } finally {
             wb.close();
         }
-    }		
+    }
+
+	@Override
+	public int getListAll(PagingVO pvo) throws Exception {
+		logger.debug("@@@@@@ContractService : getListAll 메소드 호출!");
+		return cdao.getListAll(pvo);
+	}
+
+	@Override
+	public int getListPageSizeAll(PagingVO pvo) throws Exception {
+		logger.debug("@@@@@@ContractService : getListPageSizeAll 메소드 호출!");
+		return cdao.getListPageSizeAll(pvo);
+	}
+
+	@Override
+	public int getListSearchAll(PagingVO pvo) throws Exception {
+		logger.debug("@@@@@@ContractService : getListSearchAll 메소드 호출!");
+		return cdao.getListSearchAll(pvo);
+	}
+
+	@Override
+	public List<ContractVO> getListPageSizeObjectContractVO(PagingVO pvo) throws Exception {
+		logger.debug("@@@@@@ContractService : getListPageSizeObjectContractVO 메소드 호출!");
+		return cdao.getListPageSizeObjectContractVO(pvo);
+	}
+
+	@Override
+	public List<ContractVO> getListSearchObjectContractVO(PagingVO pvo) throws Exception {
+		logger.debug("@@@@@@ContractService : getListSearchObjectContractVO 메소드 호출!");
+		return cdao.getListSearchObjectContractVO(pvo);
+	}
 	
 }

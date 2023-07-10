@@ -59,8 +59,8 @@ input {
 											<c:if test="${emp_department.equals('영업') || emp_department.equals('영업팀') || emp_department.equals('Master')}">
 												<button type="button" class="btn btn-success" onclick="openPop();">수주등록</button>
 											</c:if>
-<!-- 												<form action="/contract/downExcel" id="excelForm" method="post" style="display:inline;"> -->
-<%-- 													<input type="hidden" name="contractList" value="${contractList }"> --%>
+<!-- 												<form action="/contract/downExcel" id="excelForm" method="get" style="display:inline;"> -->
+<%-- 													<input type="hidden" id="contractList" name="contractList" value="${contractList }"> --%>
 <!-- 													<button type="submit" class="btn btn-light" id="excel" form="excelForm">엑셀다운</button> -->
 <!-- 												</form> -->
 												<button type="button" class="btn btn-light" id="print" onclick="printList();">출력하기</button>
@@ -86,7 +86,7 @@ input {
 								                      <c:forEach var="vo" items="${contractList }">
 									                      <tbody>
 									                        <tr onclick="infoPop('${vo.cont_id}')">
-								 								<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">${vo.cont_id }</font></font></td>
+								 								<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" >${vo.cont_id }</font></font></td>
 																<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" id="product_id"  value="${vo.product_id }" onclick="infoPop('${vo.cont_id}');">${vo.product_id }</font></font></td>
 																<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" id="product_name"  value="${vo.product_name }" onclick="infoPop('${vo.cont_id}');">${vo.product_name }</font></font></td>
 																<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" id="cust_name" value="${vo.cust_name }">${vo.cust_name }</font></font></td>
@@ -142,22 +142,26 @@ input {
 		
 // 		$("#excel").click(function(){
 			
-// 			var formObject = {
-// 				cont_id : $('#cont_id').val(),
-// // 				product_id : product_id, 
-// // 				product_name : product_name,
-// // 				cust_name : cust_name, 
-// // 				cont_date : cont_date,
-// // 				cont_qty : cont_qty,
-// // 				production_id : production_id, 
-// // 				cont_emp : cont_emp
-// 			}
-// 			console.log("표의 데이타 : "+formObject);
+// // 			var contractList = {
+// // 				cont_id : $('#cont_id').val(),
+// // // 				product_id : $('#product_id').val(), 
+// // // 				product_name : $('#product_name').val(),
+// // // 				cust_name : $('#cust_name').val(), 
+// // // 				cont_date : $('#cont_date').val(),
+// // // 				cont_qty : $('#cont_qty').val(),
+// // // 				production_id : $('#production_id').val(), 
+// // // 				cont_emp : $('#cont_emp').val()
+// // 			}
+// 			var contractList = $('#contractList').val();
+// 			console.log("표의 데이타 : "+contractList);
+// 			console.log("표의 데이타2 : "+JSON.stringify(contractList));
 			
 // 			$.ajax({
-// 				url : '${contextPath}/contract/downExcel',
-// 				type : 'post',
-// 				data : formObject,
+// 				url : '${contextPath}/contract/downExcel/'+contractList,
+// 				type : 'get',
+// // 				contentType : 'application/json',
+// // 				data : JSON.stringify(contractList),
+// 				data : contractList,
 // 				success : function(){
 // 					alert('성공!');
 // 				},

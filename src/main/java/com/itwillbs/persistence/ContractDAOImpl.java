@@ -1,5 +1,7 @@
 package com.itwillbs.persistence;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.ContractVO;
+import com.itwillbs.domain.PagingVO;
 import com.itwillbs.domain.ProductionVO;
 
 @Repository
@@ -72,6 +75,36 @@ public class ContractDAOImpl implements ContractDAO {
 		logger.debug("##########ContractDAO : readProductInfo 메소드 호출!");
 		return sqlSession.selectOne(NAMESPACE+".getProductInfo", product_id);
 	}
+	////////////////////////////////페이징처리 DAO/////////////////////////////
+	@Override
+	public int getListAll(PagingVO pvo) throws Exception {
+		logger.debug("##########ContractDAO : getListAll 메소드 호출!");
+		return sqlSession.selectOne(NAMESPACE+".getListAll", pvo);
+	}
 
+	@Override
+	public int getListPageSizeAll(PagingVO pvo) throws Exception {
+		logger.debug("##########ContractDAO : getListPageSizeAll 메소드 호출!");
+		return sqlSession.selectOne(NAMESPACE+".getListPageSizeAll", pvo);
+	}
+
+	@Override
+	public int getListSearchAll(PagingVO pvo) throws Exception {
+		logger.debug("##########ContractDAO : getListSearchAll 메소드 호출!");
+		return sqlSession.selectOne(NAMESPACE+".getListSearchAll", pvo);
+	}
+
+	@Override
+	public List<ContractVO> getListPageSizeObjectContractVO(PagingVO pvo) throws Exception {
+		logger.debug("##########ContractDAO : getListPageSizeObjectContractVO 메소드 호출!");
+		return sqlSession.selectList(NAMESPACE+".getListPageSizeObjectContractVO", pvo);
+	}
+
+	@Override
+	public List<ContractVO> getListSearchObjectContractVO(PagingVO pvo) throws Exception {
+		logger.debug("##########ContractDAO : getListSearchObjectContractVO 메소드 호출!");
+		return sqlSession.selectList(NAMESPACE+".getListSearchObjectContractVO", pvo);
+	}
+	////////////////////////////////페이징처리 DAO/////////////////////////////
 
 }
